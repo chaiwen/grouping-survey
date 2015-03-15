@@ -98,17 +98,17 @@ body {
 
 }
 #mainDiv {
-	width: 810px;
+	width: 820px;
 	margin: 0px auto;
-
 }
 #dragDiv {
 	float: left;
 	width: 450px;
 	height: 640px;
+	padding-top: 10px;
 }
 #dropDiv {
-	float: left;
+	float: right;
 	width: 360px;
 	background-color: red;
 }
