@@ -1,0 +1,161 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>image survey</title>
+        <meta name="description" content="img survey">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+		<script>
+			//var cols;
+
+			window.onload = function() {
+			var main = document.getElementById("dragDiv");
+			for(var i = 0; i < 8; i++) {
+				var rowDiv = document.createElement('div');
+				rowDiv.className = 'rDiv';
+				
+			//	document.body.appendChild(rowDiv);
+				for(var j = 1; j <= 5; j++) {
+					var imgNum = i * 5 + j;
+					var imgName = "img/i";
+					if(imgNum < 10) {
+						imgName += "0";
+					}
+					imgName += imgNum + ".jpg";
+					
+					var div = document.createElement('div');
+					div.className = 'iDiv';
+					div.style.backgroundImage = "url('" + imgName + "')";
+
+					var divc = document.createElement("div");
+					divc.className = "iDivContainer";
+					divc.appendChild(div);
+
+					rowDiv.appendChild(divc);
+
+					var numdiv = document.createElement("div");
+					numdiv.className = "numberDiv";
+					numdiv.innerHTML += imgNum;
+					div.appendChild(numdiv);
+
+					div.id = "d" + imgNum;
+					div.setAttribute('draggable', true);
+					div.setAttribute('ondragstart', 'return handleDragStart(event)');
+
+					//div.addEventListener('dragstart', handleDragStart, false);
+					//div.addEventListener('dragenter', handleDragEnter, false);
+					//div.addEventListener('dragover', handleDragOver, false);
+					//div.addEventListener('dragleave', handleDragLeave, false);
+				//	div.addEventListener('drop', handleDrop, false);
+				
+				}
+				main.appendChild(rowDiv);
+
+			}
+				//$(function() {
+				//		$( "#d1" ).draggable({ snap: true });
+				//	});
+
+				//cols = document.querySelectAll('.iDiv');
+
+				for (var i = 1; i < 8; i++) {
+					var dd1 = document.getElementById('drop' + i);
+					dd1.setAttribute('ondragenter', 'return handleDragEnter(event)');
+					dd1.setAttribute('ondrop', 'return handleDrop(event)');
+					dd1.setAttribute('ondragover', 'return handleDragOver(event)');
+
+
+				}
+								//dd1.addEventListener('drop', handleDrop, false);
+				
+			}
+
+			//var dragSrcEl = null;
+			//function allowDrop(ev) {
+			//	ev.preventDefault();
+			//}
+			function handleDragStart(e) {
+				//this.style.opacity = '0.4';
+				//dragSrcEl = this;
+				e.dataTransfer.effectAllowed = 'move';
+				e.dataTransfer.setData("Text", e.target.getAttribute('id'));
+				e.dataTransfer.setDragImage(e.target, 0, 0);
+				return true;
+			}
+			function handleDragOver(e) {
+				//if(e.preventDefault) {
+				//	e.preventDefault();
+				//}
+				//e.dataTransfer.dropEffect = 'move';
+				return false;
+			}
+			function handleDragEnter(e) {
+				e.preventDefault();
+				return true;
+				//this.classList.add('over');
+			}
+			//function handleDragLeave(e) {
+				//this.classList.remove('over');
+			//}
+			function handleDrop(e) {
+								//if (dragSrcEl != this) {
+					//dragSrcEl.innerHTML = this.innerHTML;
+				var src = e.dataTransfer.getData("Text");
+				e.target.appendChild(document.getElementById(src));
+				if (e.stopPropagation) {
+					e.stopPropagation();
+				}
+
+				//}
+				return false;
+			}
+						/*function drag(ev) {
+				dragSrcEl = this;
+				ev.dataTransfer.effectAllowed = 'move';
+				ev.dataTransfer.setData("text/html", ev.target.id);
+			}
+			function drop(ev) {
+				ev.preventDefault();
+				if (dragSrcEl != this) {
+					dragSrcEl.innerHTML = this.innerHTML;
+					this.innerHTML = e.dataTransfer.getData("text/html");
+					//var data = ev.dataTransfer.getData("image");
+					//ev.target.appendChild(document.getElementById(data));
+				}
+			}*/
+		</script>
+
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+		<div id="mainDiv">
+		<div id="dragDiv"></div>
+		<div id="dropDiv">
+			<div id="drop1" class="drop"></div>
+			<div id="drop2" class="drop"></div>
+			<div id="drop3" class="drop"></div>
+			<div id="drop4" class="drop"></div>
+			<div id="drop5" class="drop"></div>
+			<div id="drop6" class="drop"></div>
+			<div id="drop7" class="drop"></div>
+		</div>
+		</div>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
