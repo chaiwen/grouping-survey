@@ -95,78 +95,97 @@ textarea {
    Author's custom styles
    ========================================================================== */
 body {
-
+	background-color: black;
+	color: white;
+}
+#mainDiv2 {
+	width: 800px;
+	margin: 0px auto;
 }
 #mainDiv {
-	width: 820px;
+	width: 1100px;
 	margin: 0px auto;
+}
+#dropDiv {
+	float: left;
+	width: 368px;
+}
+.drop {
+	width: 364px;
+	height: 124px;
+	border: solid 2px #000000;
+	background-color: #333333;
+}
+#title {
+	padding: 20px;
 }
 #dragDiv {
 	float: left;
-	width: 450px;
-	height: 640px;
-	padding-top: 10px;
+	width: 364px;
+	height: 620px;
 }
-#dropDiv {
-	float: right;
-	width: 360px;
-	background-color: red;
-}
-.drop {
-	width: 360px;
-	height: 120px;
-}
-#drop1 {
-	background-color: #dddddd;
-}
-#drop2 {
-	background-color: #bbbbbb;
-}
-#drop3 {
-	background-color: #dddddd;
-}
-#drop4 {
-	background-color: #bbbbbb;
-}
-#drop5 {
-	background-color: #dddddd;
-}
-#drop6 {
-	background-color: #bbbbbb;
-}
-#drop7 {
-	background-color: #dddddd;
-}
-
-
-.iDivContainer {
-	width: 90px;
-	height: 60px;
+#dragDiv2 {
 	float: left;
+	width: 752px;
+	height: 496px;
+}
+.cDiv {
+	float: left;
+	height: 62px;
+	width: 91px;
 	display: block;
-	background-color: black;
+}
+.cDiv2 {
+	float: left;
+	height: 140px;
+	width: 91px;
+	display: block;
+	font-size: 12px;
+	color: #eeeeee;
+	text-align: right;
+	padding-right: 8px;
+}
+
+.iDiv2 {
+	float: left;
+	height: 60px;
+	width: 89px;
+	border: solid 1px black;
+	background-repeat: no-repeat;
+	margin-bottom: 4px;
 }
 .iDiv {
 	float: left;
 	height: 60px;
-	width: 90px;
+	width: 89px;
 	display: block;
+	border: solid 1px black;
 	background-repeat: no-repeat;
 	cursor: move;
 }
-.iDiv.over {
-	border: 2px dashed #000;
-}
 .numberDiv {
 	background-color: black;
-	width: 20px;
+	width: 16px;
 	font-size: 10px;
 	color: white;
 	padding-left: 5px;
+	text-align: left;
 
 }
 .rDiv {
-	width: 500px;
+	width: 364px;
+	height: 62px;
+}
+.rDiv2 {
+	width: 800px;
+	height: 62px;
+}
+.intxt {
+	width: 18px;
+	color: black;
+	background-color: #dedede;
+	border: solid 1px #555555;
+
 }
 
 

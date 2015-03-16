@@ -19,13 +19,17 @@
 
 			window.onload = function() {
 			var main = document.getElementById("dragDiv");
-			for(var i = 0; i < 8; i++) {
+
+			var numCols = 4;
+			var numRows = 10;
+			for(var i = 0; i < numRows; i++) {
 				var rowDiv = document.createElement('div');
 				rowDiv.className = 'rDiv';
-				
+				main.appendChild(rowDiv);
+
 			//	document.body.appendChild(rowDiv);
-				for(var j = 1; j <= 5; j++) {
-					var imgNum = i * 5 + j;
+				for(var j = 1; j <= numCols; j++) {
+					var imgNum = i * numCols + j;
 					var imgName = "img/i";
 					if(imgNum < 10) {
 						imgName += "0";
@@ -36,16 +40,16 @@
 					div.className = 'iDiv';
 					div.style.backgroundImage = "url('" + imgName + "')";
 
-					var divc = document.createElement("div");
-					divc.className = "iDivContainer";
-					divc.appendChild(div);
-
-					rowDiv.appendChild(divc);
-
 					var numdiv = document.createElement("div");
 					numdiv.className = "numberDiv";
 					numdiv.innerHTML += imgNum;
+					
+					var cdiv = document.createElement('div');
+					cdiv.className = 'cDiv';
+
 					div.appendChild(numdiv);
+					cdiv.appendChild(div);
+					rowDiv.appendChild(cdiv);
 
 					div.id = "d" + imgNum;
 					div.setAttribute('draggable', true);
@@ -55,11 +59,10 @@
 					//div.addEventListener('dragenter', handleDragEnter, false);
 					//div.addEventListener('dragover', handleDragOver, false);
 					//div.addEventListener('dragleave', handleDragLeave, false);
-				//	div.addEventListener('drop', handleDrop, false);
+					//div.addEventListener('drop', handleDrop, false);
 				
 				}
-				main.appendChild(rowDiv);
-
+				
 			}
 				//$(function() {
 				//		$( "#d1" ).draggable({ snap: true });
@@ -75,63 +78,36 @@
 
 
 				}
-								//dd1.addEventListener('drop', handleDrop, false);
+				//dd1.addEventListener('drop', handleDrop, false);
 				
 			}
 
-			//var dragSrcEl = null;
-			//function allowDrop(ev) {
-			//	ev.preventDefault();
-			//}
 			function handleDragStart(e) {
-				//this.style.opacity = '0.4';
-				//dragSrcEl = this;
 				e.dataTransfer.effectAllowed = 'move';
 				e.dataTransfer.setData("Text", e.target.getAttribute('id'));
-				e.dataTransfer.setDragImage(e.target, 0, 0);
+				e.dataTransfer.setDragImage(e.target, 45, 30);
 				return true;
 			}
 			function handleDragOver(e) {
-				//if(e.preventDefault) {
-				//	e.preventDefault();
-				//}
 				//e.dataTransfer.dropEffect = 'move';
 				return false;
 			}
 			function handleDragEnter(e) {
 				e.preventDefault();
 				return true;
-				//this.classList.add('over');
 			}
-			//function handleDragLeave(e) {
-				//this.classList.remove('over');
-			//}
 			function handleDrop(e) {
-								//if (dragSrcEl != this) {
-					//dragSrcEl.innerHTML = this.innerHTML;
 				var src = e.dataTransfer.getData("Text");
-				e.target.appendChild(document.getElementById(src));
+				var newdiv = e.target;
+				console.log(newdiv.className);
+				if (newdiv.className == "drop") {
+					e.target.appendChild(document.getElementById(src));
+				}
 				if (e.stopPropagation) {
 					e.stopPropagation();
 				}
-
-				//}
 				return false;
 			}
-						/*function drag(ev) {
-				dragSrcEl = this;
-				ev.dataTransfer.effectAllowed = 'move';
-				ev.dataTransfer.setData("text/html", ev.target.id);
-			}
-			function drop(ev) {
-				ev.preventDefault();
-				if (dragSrcEl != this) {
-					dragSrcEl.innerHTML = this.innerHTML;
-					this.innerHTML = e.dataTransfer.getData("text/html");
-					//var data = ev.dataTransfer.getData("image");
-					//ev.target.appendChild(document.getElementById(data));
-				}
-			}*/
 		</script>
 
     </head>
@@ -141,20 +117,27 @@
         <![endif]-->
 
 		<div id="mainDiv">
-		<div id="dragDiv" style="text-align: center">
-		Drag and drop these images into the 7 groups on the right in any way that makes sense to you.
-		</div>
-		<div id="dropDiv">
-			<div id="drop1" class="drop"></div>
-			<div id="drop2" class="drop"></div>
-			<div id="drop3" class="drop"></div>
-			<div id="drop4" class="drop"></div>
-			<div id="drop5" class="drop"></div>
-			<div id="drop6" class="drop"></div>
-			<div id="drop7" class="drop"></div>
-		</div>
-		</div>
+			<div id="title">
+			Drag and drop these images into the 7 groups on the right in any way that makes sense to you.
+			Then screenshot and send to me please :)
+			</div>
 
+			<div id="dragDiv">
+			</div>
+			<div id="dropDiv">
+				<div id="drop1" class="drop"></div>
+				<div id="drop2" class="drop"></div>
+				<div id="drop3" class="drop"></div>
+				<div id="drop4" class="drop"></div>
+			</div>
+			<div id="dropDiv">
+				<div id="drop5" class="drop"></div>
+				<div id="drop6" class="drop"></div>
+				<div id="drop7" class="drop"></div>
+
+
+			</div>
+		</div>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>

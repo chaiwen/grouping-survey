@@ -1,0 +1,115 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>image survey</title>
+        <meta name="description" content="img survey">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+		<script>
+			//var cols;
+
+			window.onload = function() {
+			var main = document.getElementById("dragDiv2");
+
+			var numCols = 8;
+			var numRows = 5;
+			for(var i = 0; i < numRows; i++) {
+				var rowDiv = document.createElement('div');
+				rowDiv.className = 'rDiv2';
+				main.appendChild(rowDiv);
+
+			//	document.body.appendChild(rowDiv);
+				for(var j = 1; j <= numCols; j++) {
+					var imgNum = i * numCols + j;
+					var imgName = "img/i";
+					if(imgNum < 10) {
+						imgName += "0";
+					}
+					imgName += imgNum + ".jpg";
+					
+					var div = document.createElement('div');
+					div.className = 'iDiv2';
+					div.style.backgroundImage = "url('" + imgName + "')";
+
+					var numdiv = document.createElement("div");
+					numdiv.className = "numberDiv";
+					numdiv.innerHTML += imgNum;
+					
+					var cdiv = document.createElement('div');
+					cdiv.className = 'cDiv2';
+
+					div.appendChild(numdiv);
+					cdiv.appendChild(div);
+					rowDiv.appendChild(cdiv);
+
+					div.id = "d" + imgNum;
+
+					cdiv.innerHTML += "like color: ";
+
+					var input = document.createElement("input");
+					input.type = "text";
+					input.className = "intxt";
+					cdiv.appendChild(input);
+					
+					cdiv.innerHTML += "<br>not color: ";
+					input = document.createElement("input");
+					input.type = "text";
+					input.className = "intxt";
+					cdiv.appendChild(input);
+
+					cdiv.innerHTML += "<br>like texture: ";
+					input = document.createElement("input");
+					input.type = "text";
+					input.className = "intxt";
+					cdiv.appendChild(input);
+
+					cdiv.innerHTML += "<br>not texture: ";
+					input = document.createElement("input");
+					input.type = "text";
+					input.className = "intxt";
+					cdiv.appendChild(input);
+
+				}
+				
+			}
+							
+			}
+
+			
+		</script>
+
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+		<div id="mainDiv2">
+			<div id="title">
+			For each image, please indicate:<br>
+			1. the number of the image that is most like it in color.<br>
+			2. the number of the image most unlike it in color.<br>
+			3. the number of the image most like it in texture.<br>
+			4. the number of the image most unlike it in texture.<br>
+			Then screenshot and send to me please :)
+						
+			</div>
+
+			<div id="dragDiv2">
+			</div>
+		</div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
